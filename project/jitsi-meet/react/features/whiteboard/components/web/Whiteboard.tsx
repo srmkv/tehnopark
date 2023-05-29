@@ -138,8 +138,15 @@ const Whiteboard = (props: WithTranslation): JSX.Element => {
 
                                 // @ts-ignore
                                 ref: excalidrawRef,
-                                theme: 'light',
-                                UIOptions: WHITEBOARD_UI_OPTIONS
+                                theme: 'dark',
+                                UIOptions: WHITEBOARD_UI_OPTIONS,
+                                langCode: 'ru-RU',
+                                onChange: (el) => {
+                                    console.log('change', el)
+                                },
+                                onPointerUpdate: (el) => {
+                                    console.log('pointerUpdate', el)
+                                },
                             }}
                             getCollabAPI = { getCollabAPI } />
                     </div>
