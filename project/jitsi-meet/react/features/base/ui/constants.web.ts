@@ -256,6 +256,7 @@ export const commonStyles = (theme: Theme) => {
         '.toolbox-content-items': {
             background: theme.palette.ui01,
             borderRadius: 6,
+            width: '100%',
             margin: '0 auto',
             padding: 6,
             textAlign: 'center' as const,

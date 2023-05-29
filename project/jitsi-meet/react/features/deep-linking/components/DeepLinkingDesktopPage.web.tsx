@@ -118,7 +118,7 @@ const DeepLinkingDesktopPage: React.FC<WithTranslation> = ({ t }) => {
                             && <img
                                 alt = { t('welcomepage.logo.logoDeepLinking') }
                                 className = { styles.logo }
-                                src = 'images/logo-deep-linking.png' />
+                                src = 'images/logo-lend.png' />
                     }
                 </div>
                 <div className = { styles.launchingMeetingLabel }>

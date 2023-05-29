@@ -10,6 +10,8 @@ const BUTTON_SIZE = 48;
  * The style of toolbar buttons.
  */
 const toolbarButton = {
+    background: 'rgb(0, 92, 107)',
+    width: 'calc(100% - 50px)',
     borderRadius: BaseTheme.shape.borderRadius,
     borderWidth: 0,
     flex: 0,

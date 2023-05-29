@@ -17,7 +17,7 @@ export const colors = {
     primary09: '#CCDDF9',
 
     surface01: '#040404',
-    surface02: '#141414',
+    surface02: '#10525f',
     surface03: '#292929',
     surface04: '#3D3D3D',
     surface05: '#525252',

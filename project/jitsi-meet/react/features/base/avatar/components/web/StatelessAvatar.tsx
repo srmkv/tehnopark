@@ -49,7 +49,7 @@ interface IProps extends IAvatarProps {
 const useStyles = makeStyles()(theme => {
     return {
         avatar: {
-            backgroundColor: '#AAA',
+            backgroundColor: 'rgb(26, 136, 157)',
             borderRadius: '50%',
             fontWeight: '600',
             color: theme.palette?.text01 || '#fff',
