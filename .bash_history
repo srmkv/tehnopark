@@ -332,3 +332,73 @@ ls -la
 cd public/
 ls -la
 nano index.html 
+cd project/excalidraw
+ls -la
+cd ..
+ls -la
+cd ..
+cd project/excalidraw-backend/
+ls -la
+npm run start
+pm2 start 'npm run start'
+cd ..
+git commit -m "dark-theme and collaboration"
+nano .gitignore 
+git add .
+git commit -m "dark-theme and collaboration"
+git push origin main
+cd /home/srmkv/project/lib-jitsi-meet/
+npm run build
+cd ../
+cd jitsi-meet/
+make
+grep -iRl "rgb(20, 20, 20)"
+grep -iRl "'rgb(20, 20, 20)'"
+cd react/features/toolbox/
+grep -iRl "border-radius"
+cd ../
+grep -iRl "border-radius"
+cd 
+cd /home/srmkv/project/jitsi-meet/
+grep -iRl "border-radius"
+grep -iRl "border_radius"
+make
+cd ../
+git add project/jitsi-meet/react/*
+git commit -m "redizain"
+git push origin main
+cd /home/srmkv/project/jitsi-meet/
+make
+grep -iRl "title"
+cd react/
+grep -iRl "title"
+grep -iRl "<head>"
+grep -iRl "<head"
+grep -iRl "APP_NAME"
+cd ../
+make
+git add images/*
+git commit -m "favicon"
+git push origin main
+grep -iRl "powered by"
+grep -iRl "send clap"
+grep -iRl "reactions"
+git add lang/*
+git commit -m "lang"
+git push origin main
+make
+grep -iRl "terminated"
+grep -iRl "been terminated"
+git add react/*
+git commit -m "Встреча была прекращена"
+git push origin main
+make
+git commit -m "Встреча была прекращена"
+grep -iRl "been terminated"
+grep -iRl "TRIGGER_READY_TO_CLOSE_REASONS"
+grep -iRl "notifyReadyToClose"
+grep -iRl "been terminated"
+git add resources/*
+git commit -m "оповещение о завершении"
+git push origin main
+make
