@@ -11,7 +11,7 @@
 --
 local get_room_by_name_and_subdomain = module:require 'util'.get_room_by_name_and_subdomain;
 
-local END_CONFERENCE_REASON = 'The meeting has been terminated';
+local END_CONFERENCE_REASON = 'Встреча была прекращена';
 
 -- Since this file serves as both the host module and the component, we rely on the assumption that
 -- end_conference_component var would only be define for the host and not in the end_conference component
@@ -28,7 +28,7 @@ module:depends("jitsi_session");
 
 local muc_component_host = module:get_option_string('muc_component');
 if muc_component_host == nil then
-    module:log('error', 'No muc_component specified. No muc to operate on!');
+    module:log('error', 'muc_component не указан. Нет muc для выполнения операции!');
     return;
 end
 
@@ -54,7 +54,7 @@ function on_message(event)
         local room = get_room_by_name_and_subdomain(session.jitsi_web_query_room, session.jitsi_web_query_prefix);
 
         if not room then
-            module:log('warn', 'No room found found for %s/%s',
+            module:log('warn', 'Не найдено ни одной комнаты для %s/%s',
                     session.jitsi_web_query_prefix, session.jitsi_web_query_room);
             return false;
         end
