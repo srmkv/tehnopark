@@ -402,3 +402,38 @@ git add resources/*
 git commit -m "оповещение о завершении"
 git push origin main
 make
+ls -la
+cd project/
+ls -la
+nano /etc/nginx/sites-enabled/board.system-logos.ru.conf 
+cd board/
+ls -la
+rm .git
+nano .gitattributes 
+rm .git*
+cd ..
+cd excalidraw
+ls -la
+rm .github .git -r
+ls -la
+cd ..
+git add --all
+git status
+git commit -m 'remove .git'
+git push origin main
+ls -la
+cd project/jitsi-meet/
+ls -la
+sudo nano /etc/jitsi/meet/meet.board.system-logos.ru-config.js 
+cd
+git status
+git log
+git add .
+git commit -m 'title & owner lesson fix'
+git push origin main
+nano .gitignore 
+git add -a
+git add -A
+git status
+git push origin main
+git commit -m '
