@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'Utily';
+    src: local('Utily Regular'), local('Utily-Regular'),
+        url('fonts/Utily-Regular.woff2') format('woff2'),
+        url('fonts/Utily-Regular.woff') format('woff'),
+        url('fonts/Utily-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+      font-family: 'Utily';
+      src: local('Utily Medium'), local('Utily-Medium'),
+          url('fonts/Utily-Medium.woff2') format('woff2'),
+          url('fonts/Utily-Medium.woff') format('woff'),
+          url('fonts/Utily-Medium.ttf') format('truetype');
+      font-weight: 500;
+      font-style: normal;
+    }
+    @font-face {
+        font-family: 'Utily';
+        src: local('Utily Bold'), local('Utily-Bold'),
+            url('fonts/Utily-Bold.woff2') format('woff2'),
+            url('fonts/Utily-Bold.woff') format('woff'),
+            url('fonts/Utily-Bold.ttf') format('truetype');
+        font-weight: 700;
+        font-style: normal;
+      }

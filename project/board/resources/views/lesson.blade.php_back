@@ -1,0 +1,397 @@
+@php
+    $lesson = \App\Models\Lesson::whereSlug($slug)->first();
+    if (!$lesson) {
+        redirect('where')->send();
+    }
+@endphp
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style-vks.css" />
+    <title>Лекция {{ $lesson->title }}</title>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="px-15">
+            <header class="spot flex-center space-between">
+                <div class="flex-center left">
+                    <a href="#" class="logo">
+                        <img src="/images/logo.png" alt="" />
+                    </a>
+
+                    <div class="flex-center">
+                        <a href="#" class="avatar mr-10">
+                            @if (Auth::user()->image)
+                                <img height="58px" width="58px" class="image rounded-circle"
+                                    src="{{ asset('/storage/avatar/' . Auth::user()->email . '/' . Auth::user()->image) }}">
+                            @else
+                                <img height="58px" width="58px" class="image rounded-circle"
+                                    src="{{ asset('/storage/avatar/user.png') }}">
+                            @endif
+                        </a>
+
+                        <div class="flex">
+                            <div class="mask">
+                                {{ $lesson->title }}
+                            </div>
+                            {{-- <div class="mask">
+                  01:45:32
+                </div> --}}
+                        </div>
+
+                    </div>
+                </div>
+                <div>
+                    <ul class="nowrap" id="menu_top">
+                        <li class="sm-hide">
+                            <a onclick="clickMenu('openSettingsDialog')" aria-label="Настройки" href="#">
+                                <img src="/images/vks_controls-vertical-alt.svg" alt="" />
+                            </a>
+                        </li>
+                        <li class="sm-hide">
+                            <a onclick="clickMenu('setFullScreen')" aria-label="На весь экран" href="#">
+                                <img src="/images/vks_full.svg" alt="" />
+                            </a>
+                        </li>
+                        <li class="sm-hide">
+                            <a onclick="clickMenu('toggleAudio')" aria-label="Микрофон" href="#">
+                                <img src="/images/vks_mute.svg" alt="" />
+                            </a>
+                        </li>
+                        <li class="mob-visible">
+                            <a onclick="
+                    this.parentNode.parentNode.classList.toggle('active');
+                "
+                                href="#">
+                                <img src="/images/vks_menu_menu.svg" style="width:20px">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+
+            <div id="meet">
+
+            </div>
+
+            <div id="main_menu" class="App-toolbar vks spot flex-center space-between">
+                <div class="flex-center">
+                    <label onclick="clickMenu('toggleVideo')" aria-label="Видео" data-id="toggleVideo">
+                        <img class="enabled" src="/images/vks_menu_cam.svg" alt="" />
+                        <img class="disabled" src="/images/menu/film.svg" alt="" />
+                    </label>
+                    <label onclick="clickMenu('toggleAudio')" aria-label="Микрофон" data-id="toggleAudio">
+                        <img class="enabled" src="/images/vks_menu_mic.svg" alt="" />
+                        <img class="disabled" src="/images/menu/microphone.svg" alt="" />
+                    </label>
+                    <label onclick="clickMenu('togglePad')" class="xxs-hide" aria-label="Доска" data-id="togglePad">
+                        <img src="/images/menu/window.svg">
+                    </label>
+                    <label onclick="clickMenu('toggleShareScreen')" class="xs-hide" aria-label="Поделиться экраном"
+                        data-id="toggleShareScreen">
+                        <img src="/images/vks_menu_laptop.svg" alt="" />
+                    </label>
+                    <label onclick="clickMenu('toggleChat')" class="sm-hide" aria-label="Чат" data-id="toggleChat">
+                        <img src="/images/vks_menu_chat.svg" alt="" />
+                    </label>
+                    <label onclick="clickMenu('toggleRaiseHand')" class="sm-hide" aria-label="Поднять руку"
+                        data-id="toggleRaiseHand">
+                        <img src="/images/vks_menu_hand.svg" alt="" />
+                    </label>
+                    <label onclick="clickMenu('toggleParticipantsPane')" class="sm-hide" aria-label="Участники"
+                        data-id="toggleParticipantsPane">
+                        <img src="/images/vks_menu_person.svg" alt="" />
+                    </label>
+                    <label onclick="clickMenu('toggleTileView')" class="xs-hide" aria-label="Режим отображения"
+                        data-id="toggleTileView">
+                        <img src="/images/vks_menu_layout-left.svg" alt="" />
+                    </label>
+                    <label onclick="clickMenu('hangup')" aria-label="Закончить" data-id="hangup">
+                        <img src="/images/vks_menu_power.svg" alt="" />
+                    </label>
+                </div>
+                <div class="flex-center">
+                    <label onclick="clickMenu('dropdown')" aria-label="Меню" data-id="dropdown" class="dropdown">
+                        <img src="/images/vks_menu_menu.svg" style="width:20px" />
+                        <ul class="dropdown-menu nowrap hide">
+                            <li onclick="clickMenu('toggleShareScreen')" class="menu-item mob-visible"
+                                aria-label="Поделиться экраном" data-id="toggleShareScreen">
+                                <img src="/images/vks_menu_laptop.svg" alt="" />
+                                <div>Поделиться экраном</div>
+                            </li>
+                            <li onclick="clickMenu('toggleChat')"  class="menu-item mob-visible" aria-label="Чат"
+                                data-id="toggleChat">
+                                <img src="/images/vks_menu_chat.svg" alt="" />
+                                <div>Чат</div>
+                            </li>
+                            <li onclick="clickMenu('toggleRaiseHand')"  class="menu-item mob-visible" aria-label="Поднять руку"
+                                data-id="toggleRaiseHand">
+                                <img src="/images/vks_menu_hand.svg" alt="" />
+                                <div>Поднять руку</div>
+                            </li>
+                            <li onclick="clickMenu('toggleParticipantsPane')"  class="menu-item mob-visible" aria-label="Участники"
+                                data-id="toggleParticipantsPane">
+                                <img src="/images/vks_menu_person.svg" alt="" />
+                                <div>Участники</div>
+                            </li>
+                            <li onclick="clickMenu('toggleTileView')" class="menu-item mob-visible" aria-label="Режим отображения"
+                                data-id="toggleTileView">
+                                <img src="/images/vks_menu_layout-left.svg" alt="" />
+                                <div>Режим отображения</div>
+                            </li>
+
+                            <li onclick="clickMenu('videoQualityDialog')" class="menu-item">
+                                <img src="/images/menu/controls-vertical-alt.svg">
+                                <div>Производительность</div>
+                            </li>
+                            <li onclick="clickMenu('toggleSecurityDialog')" class="menu-item">
+                                <img src="/images/menu/shield.svg">
+                                <div>Безопасность</div>
+                            </li>
+                            <li onclick="clickMenu('startRecordDialog')" class="menu-item">
+                                <img src="/images/menu/radio-selected.svg">
+                                <div>Начать запись</div>
+                            </li>
+                            <li onclick="clickMenu('muteEveryoneAudio')" class="menu-item">
+                                <img src="/images/menu/microphone.svg">
+                                <div>Выкл микрофон у всех</div>
+                            </li>
+                            <li onclick="clickMenu('muteEveryoneVideo')" class="menu-item">
+                                <img src="/images/menu/film.svg">
+                                <div>Выкл камеру у всех</div>
+                            </li>
+                            <li class="menu-item">
+                                <img src="/images/menu/video.svg">
+                                <div>YouTube</div>
+                            </li>
+                            <li onclick="clickMenu('togglePad')" class="menu-item">
+                                <img src="/images/menu/window.svg">
+                                <div>Онлайн доска</div>
+                            </li>
+                            <li onclick="clickMenu('toggleVirtualBackgroundDialog')" class="menu-item">
+                                <img src="/images/menu/image.svg">
+                                <div>Фоновое изображение</div>
+                            </li>
+                            <li onclick="clickMenu('toggleSpeakerStats')" class="menu-item">
+                                <img src="/images/menu/chart.svg">
+                                <div>Статистика</div>
+                            </li>
+                            <li onclick="clickMenu('openSettingsDialog')" class="menu-item">
+                                <img src="/images/menu/controls-vertical-alt.svg">
+                                <div>Настройки</div>
+                            </li>
+                        </ul>
+                    </label>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://meet.board.system-logos.ru/external_api.js"></script>
+
+
+    <script>
+        let avatar_url = {{ Js::from(asset('/storage/avatar/user.png')) }};
+
+        @if (Auth::user()->image)
+            avatar_url = {{ Js::from( asset('/storage/avatar/' . Auth::user()->email . '/' . Auth::user()->image) ) }}
+        @endif
+
+        const domain = 'meet.board.system-logos.ru';
+        const options = {
+            userInfo: {
+                email: '{{ auth()->user()->email }}',
+                displayName: '{{ auth()->user()->name }}',
+                avatarUrl: avatar_url,
+            },
+            roomName: '{{ $lesson->title }}',
+            width: '100%',
+            parentNode: document.querySelector('#meet'),
+            lang: 'ru',
+            configOverwrite: {
+                hideConferenceSubject: true,
+                hideConferenceTimer: true,
+                enableWelcomePage: false,
+                disableShortcuts: false,
+                enableClosePage: false,
+                readOnlyName: true,
+                // openSharedDocumentOnJoin: true
+            },
+            interfaceConfigOverwrite: {
+                TOOLBAR_BUTTONS: [
+                    // 'camera',
+                    // 'chat',
+                    // 'closedcaptions',
+                    // 'desktop',
+                    // 'dock-iframe',
+                    // 'download',
+                    // 'embedmeeting',
+                    // 'etherpad',
+                    // 'feedback',
+                    // 'filmstrip',
+                    // 'fullscreen',
+                    // 'hangup',
+                    // 'help',
+                    // 'highlight',
+                    // 'invite',
+                    // 'linktosalesforce',
+                    // 'livestreaming',
+                    // 'microphone',
+                    // 'participants-pane',
+                    // 'profile',
+                    // 'raisehand',
+                    // 'recording',
+                    // 'security',
+                    // 'select-background',
+                    // 'settings',
+                    // 'shareaudio',
+                    // 'sharedvideo',
+                    // 'shortcuts',
+                    // 'stats',
+                    // 'tileview',
+                    // 'toggle-camera',
+                    // 'undock-iframe',
+                    // 'videoquality',
+                    // '__end'
+                ]
+            }
+        };
+        const api = new JitsiMeetExternalAPI(domain, options);
+        let main_menu = document.getElementById('main_menu');
+
+        api.addListener('videoConferenceJoined', check);
+        api.addListener('audioMuteStatusChanged', check);
+        api.addListener('videoMuteStatusChanged', check);
+        api.addListener('screenSharingStatusChanged', check);
+        api.addListener('videoMuteStatusChanged', check);
+        api.addListener('videoMuteStatusChanged', check);
+        api.addListener('toolbarButtonClicked', function(e, b) {
+            console.log(e, b)
+        });
+
+        check();
+
+        function toggleActive(data_id, value) {
+
+            toggle = main_menu.querySelector('label[data-id="' + data_id + '"]');
+
+            if (!toggle) return;
+            if (value) {
+                toggle.classList.remove('active');
+            } else {
+                toggle.classList.add('active');
+            }
+
+        }
+
+        function active(data_id) {
+            let label = main_menu.querySelector('label[data-id="' + data_id + '"]');
+            label.classList.toggle('active');
+            if (label.classList.contains('dropdown')) {
+                label.querySelector('.dropdown-menu').classList.toggle('hide');
+            }
+        }
+
+
+        function check() {
+            api.isAudioMuted().then(val => {
+                console.log(val);
+                toggleActive('toggleAudio', val);
+            });
+            api.isVideoMuted().then(val => {
+                console.log(val);
+
+                toggleActive('toggleVideo', val);
+            });
+            api.isAudioAvailable().then(val => {
+                // console.log(val);
+
+                // console.log('isAudioAvailable',val)
+            });
+            // api.isVideoAvailable().then(val => {
+            //     console.log('isVideoAvailable',val)
+            // });
+
+
+        }
+
+        function clickMenu(item) {
+            switch (item) {
+                case 'toggleAudio':
+                    api.executeCommand('toggleAudio');
+                    check();
+                    break;
+                case 'toggleVideo':
+                    api.executeCommand('toggleVideo');
+                    check();
+                    break;
+                case 'toggleChat':
+                    api.executeCommand('toggleChat');
+                    active('toggleChat');
+                    break;
+                case 'toggleRaiseHand':
+                    api.executeCommand('toggleRaiseHand');
+                    active('toggleRaiseHand');
+                    break;
+                case 'toggleShareScreen':
+                    api.executeCommand('toggleShareScreen');
+                    active('toggleShareScreen');
+
+                    break;
+                case 'toggleParticipantsPane':
+                    api.isParticipantsPaneOpen().then(state => {
+                        api.executeCommand('toggleParticipantsPane', !state);
+                        active('toggleParticipantsPane');
+                    });
+                    break;
+                case 'toggleTileView':
+                    api.executeCommand('toggleTileView');
+                    active('toggleTileView');
+                    break;
+                case 'hangup':
+                    api.executeCommand('hangup');
+                    api.dispose();
+                    window.location.href = '/admin/groups'
+                    break;
+                case 'dropdown':
+                    active('dropdown');
+                    break;
+                case 'muteEveryoneAudio':
+                    api.executeCommand('muteEveryone', 'audio');
+                    break;
+                case 'muteEveryoneVideo':
+                    api.executeCommand('muteEveryone', 'video');
+                    break;
+                    // case 'toggleVirtualBackgroundDialog':
+                    //     api.executeCommand('toggleVirtualBackgroundDialog');
+                    //     break;
+                    // case 'openSettingsDialog':
+                    //     api.executeCommand('openSettingsDialog');
+                    //     break;
+                    // case 'toggleSecurityDialog':
+                    //     api.executeCommand('toggleSecurityDialog');
+                    //     break;
+                    // case 'videoQualityDialog':
+                    //     api.executeCommand('videoQualityDialog');
+                    //     break;
+                default:
+                    console.log(item);
+                    api.executeCommand(item);
+                    return false;
+                    break;
+            }
+
+            return false;
+        }
+    </script>
+
+</body>
+
+</html>

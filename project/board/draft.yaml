@@ -1,0 +1,48 @@
+models:
+  Licence:
+    user_id: foreign
+    licence_type_id: foreign
+    start_at: timestamp nullable
+    end_at: timestamp nullable
+    active: boolean nullable
+    relationships:
+      belongsToMany: User
+
+  LicenceType:
+    title: string nullable
+    desc: longtext nullable
+    pupils: integer nullable
+    active: boolean nullable
+    price: decimal:8,2 nullable
+
+  Course:
+    title: string nullable
+    desc: longtext nullable
+    start_at: timestamp nullable
+    end_at: timestamp nullable
+    status: integer nullable
+    user_id: foreign nullable
+    relationships:
+      belongsToMany: User
+
+  Lesson:
+    title: string nullable
+    slug: string unique:slug
+    desc: longtext nullable
+    start_at: timestamp nullable
+    status: integer nullable
+    course_id: foreign nullable
+    user_id: foreign nullable
+    pad_secret: string nullable
+    pad_json: longtext nullable
+    relationships:
+      belongsToMany: User
+
+  Transaction:
+    amount: decimal:8,2 nullable
+    tx: string nullable
+    type: enum:deposit,buy
+    desc: string nullable
+    user_id: foreign nullable
+    licence_id: foreign nullable
+    status: enum:pending,successful,failed
