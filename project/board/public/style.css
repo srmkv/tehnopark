@@ -456,5 +456,10 @@ sidebar .nav {
     .aside-menu-show .main::before, .sidebar-show .main::before {
         background: initial;
     }
-
+    .bg {
+        padding: 15px;
+    }
+    .txtauth {
+        font-size: 20px;
+    }
   }
