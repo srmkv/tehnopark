@@ -1,0 +1,186 @@
+body {
+    padding-bottom: 30px;
+    background: url(/assets/vc.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #015869;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #fff !important;
+}
+
+.checkbox label, label {
+    color: #fff;
+    cursor: pointer;
+}
+
+.mx-auto {
+    margin: 0 auto;
+}
+
+.my-auto {
+    margin: auto 0;
+}
+
+.m-auto {
+    margin: auto;
+}
+
+.txt {
+
+    color: #FFFFFF;
+    font-family: 'Utily';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    text-decoration: none;
+    line-height: 120%;
+}
+
+.zagolovok {
+    font-family: 'Utily';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 141%;
+    /* or 71px */
+
+    text-transform: uppercase;
+
+    /* #FFFFFF */
+
+    color: #FFFFFF;
+}
+
+.cont {
+    margin-top: 5%;
+}
+
+.pl {
+    position: absolute;
+    right: 0;
+    z-index: -1;
+    bottom: 0;
+}
+
+.confname {
+    background: #002831;
+    border-radius: 5px 0px 0px 5px;
+    height: 63px;
+    color: #fff;
+    width: 65%;
+    border: none;
+}
+
+.confbutton {
+    height: 63px;
+    color: #fff;
+    background: #17AFBA;
+    border-radius: 0px 5px 5px 0px;
+    border: none;
+    width: 35%;
+    font-size: calc(10px + 2 * (100vw / 1140))
+}
+
+input::placeholder {
+    color: #fff;
+    text-align: center;
+    font-size: calc(10px + 2 * (100vw / 1140))
+}
+
+.butpad {
+    margin-top: 10%;
+}
+
+.lk {
+    box-sizing: border-box;
+    background: rgba(0, 40, 49, 0.2);
+    /* #17AFBA */
+    height: 200px;
+    border: 1px solid rgba(23, 175, 186, 0.3);
+    backdrop-filter: blur(15px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 10px;
+}
+
+.bg {
+    box-sizing: border-box;
+    padding: 50px;
+
+    /* #002831 */
+
+    background: rgba(0, 40, 49, 0.2);
+    /* #17AFBA */
+
+    border: 1px solid rgba(23, 175, 186, 0.3);
+    backdrop-filter: blur(15px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 10px;
+}
+
+.txtauth {
+    font-family: 'Utily';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 141%;
+    /* or 42px */
+
+    text-align: center;
+    text-transform: uppercase;
+
+    /* #FFFFFF */
+
+    color: #FFFFFF;
+}
+
+.login {
+    border: none;
+    background: rgba(0, 40, 49, 0.3);
+    backdrop-filter: blur(15px);
+    /* Note: backdrop-filter has minimal browser support */
+    height: 60px;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.loginbtn {
+    height: 48px;
+    color: #fff;
+    background: #17AFBA;
+    border-radius: 5px;
+    padding: 0px 20px 0px 20px;
+    border: none;
+    width: 100%;
+    font-size: calc(10px + 2 * (100vw / 1140));
+}
+
+.authbtn {
+    width: 100%;
+    height: 48px;
+    color: #fff;
+    border: 1px solid #17AFBA;
+    border-radius: 5px;
+    padding: 0px 20px 0px 20px;
+    background: transparent;
+
+    font-size: calc(10px + 2 * (100vw / 1140));
+}
+
+.is-invalid {
+    border: 2px solid #ff000087;
+    background: #ff000021;
+}
+
+.invalid-feedback {
+    display: block;
+}
