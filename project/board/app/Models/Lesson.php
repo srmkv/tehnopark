@@ -61,12 +61,12 @@ class Lesson extends Model
         if (auth()->check() && backpack_user()->hasRole('owner')) {
             $owner_id = backpack_user()->id;
             static::addGlobalScope('owner_lessons', function (Builder $builder) use ($owner_id) {
-                $builder->where('user_id', $owner_id)->orWhereHas('pupils', function($query) use ($user_id) {
-                    $query->where('user_id', $user_id);
+                $builder->where('user_id', $owner_id)->orWhereHas('pupils', function($query) use ($owner_id) {
+                    $query->where('user_id', $owner_id);
                 });
             });
         }
-        if (auth()->check() && (backpack_user()->hasRole('user') || backpack_user()->hasRole('owner'))) {
+        if (auth()->check() && (backpack_user()->hasRole('user') /*|| backpack_user()->hasRole('owner')*/)) {
             $user_id = backpack_user()->id;
             static::addGlobalScope('user_lessons', function (Builder $builder) use ($user_id) {
                 $builder->whereHas('pupils', function($query) use ($user_id) {
